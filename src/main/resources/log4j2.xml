@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="warn" name="MyApp" packages="">
+  
+  <Properties>
+    <!--Directorio-->
+    <Property name="path">/home/fcastillo/payara5/logs/jsf</Property>
+  </Properties>
+  
+  <Appenders>
+    <!--Salida por consola-->
+    <Console name="STDOUT" target="SYSTEM_OUT">
+      <!--nivel fecha hora nombreclase (archivo:metodo:linea) - mensaje-->
+      <PatternLayout pattern="%highlight{%p %d %C{-4} (%F:%M:%L) - %m%n}"/>
+    </Console>
+   
+    
+    <RollingFile name="RollingFile" fileName="${path}/logVideoClub" filePattern="${path}/logVideoClub-%d{yyyy-MM-dd-HH}.log">
+      
+      <!--nivel fecha hora nombreclase (archivo:metodo:linea) - mensaje-->
+      <PatternLayout pattern="%d %p  %C{-4} (%F:%M:%L) - %m%n"/>
+      
+      <Policies>
+        <!--Crea log todos los dias-->
+        <CronTriggeringPolicy schedule="0 0 0 * * ?"/>
+        <!--Tamaño Máximo de cada archivo-->
+        <SizeBasedTriggeringPolicy size="250 MB"/>
+      </Policies>
+      
+    </RollingFile>
+  </Appenders>
+  
+  <Loggers>
+    <Root level="debug">
+      <AppenderRef ref="STDOUT"/>
+      <AppenderRef ref="RollingFile"/>
+    </Root>
+  </Loggers>
+</Configuration>

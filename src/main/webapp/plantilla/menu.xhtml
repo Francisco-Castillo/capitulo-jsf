@@ -10,8 +10,8 @@
       <h:form>
         <b:navBar brand="VideoClub" brandHref="/capitulo-jsf" fluid="true" >
           <b:navbarLinks>
-            <b:navLink value="Link" href="#"></b:navLink>
-            <b:navLink value="Link" href="#"></b:navLink>
+           
+            <b:navLink value="#{app['menu.log']}" href="#"></b:navLink>
             <b:dropMenu value="#{app['menu.idiomas']}" iconAwesome="flag">
               <b:navCommandLink value="Español" immediate = "true" ajax = "false" action="#{idiomas.spanishAction}"/>
               <b:navCommandLink value="Ingles" immediate = "true" ajax = "false"  action="#{idiomas.englishAction}"/>

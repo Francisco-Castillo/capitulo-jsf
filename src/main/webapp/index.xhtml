@@ -11,34 +11,44 @@
     <ui:composition template="./plantilla/plantilla.xhtml">
 
       <ui:define name="content">
-          <b:container>
-            <b:row>
-              <h2>#{app['peliculas.listado']}</h2>
-              <hr/>
-              <b:column col-md="8">
-                <h:form>
-                  <b:button value="Nueva pelicula" look="primary" outcome="/peliculas/nueva" style="margin-bottom: 30px;"/>
-                  <b:dataTable value="#{peliculasController.lstPeliculas}" var="p">
-                    <b:dataTableColumn value="#{p.id}" />
-                    <b:dataTableColumn value="#{p.titulo}" />
-                    <b:dataTableColumn value="#{p.genero}" />
-                    <b:dataTableColumn value="#{p.año}" />
+        <b:container>
+          <b:row>
+            <h2>#{app['peliculas.listado']}</h2>
+            <hr/>
+            <b:column col-md="12">
+              <h:form>
+                <b:button value="Nueva pelicula" look="primary" outcome="/peliculas/nueva" style="margin-bottom: 30px;"/>
+                <b:dataTable value="#{peliculasController.lstPeliculas}" var="p">
+                  <b:dataTableColumn value="#{p.id}" />
+                  <b:dataTableColumn value="#{p.titulo}" />
+                  <b:dataTableColumn value="#{p.genero}" />
+                  <b:dataTableColumn value="#{p.año}" />
 
-                    <b:dataTableColumn label=" ">
-                      <b:dropButton look="primary" value="Acciones" 
-                                    size="sm"
-                                    contentDisabled="#{buttonGroupsBean.dropButtonDisabled}">
-                        <b:navCommandLink  value="Eliminar" href="#" />
-                        <b:navCommandLink  value="Editar" outcome="/peliculas/editar" >
-                          <f:param name="idPelicula" value="#{p.id}"/>
-                        </b:navCommandLink>
-                      </b:dropButton>
-                    </b:dataTableColumn>
-                  </b:dataTable>
-                </h:form>
-              </b:column>
-            </b:row>
-          </b:container>
+                  <b:dataTableColumn label=" ">
+                    <b:dropButton look="primary" value="Acciones" 
+                                  size="sm"
+                                  contentDisabled="#{buttonGroupsBean.dropButtonDisabled}">
+                      <b:navCommandLink value="elimin" actionListener="#{peliculasController.leer(p)}"  update="amodal" oncomplete="$('.modalPseudoClass').modal()"/>
+                      <b:navCommandLink  value="Editar" outcome="/peliculas/editar" >
+                        <f:param name="idPelicula" value="#{p.id}"/>
+                      </b:navCommandLink>
+                    </b:dropButton>
+                  </b:dataTableColumn>
+                </b:dataTable>
+              </h:form>
+            </b:column>
+          </b:row>
+          <b:modal id="amodal" title="Atencion" styleClass="modalPseudoClass">
+            <p>¿Esta seguro que desea eliminar a #{peliculasController.pelicula.titulo}?</p>
+
+            <f:facet name="footer">
+              <h:form>
+              <b:button value="Close" dismiss="modal" />
+              <b:commandButton value="Aceptar" look="primary" action="#{peliculasController.eliminar()}"/>
+              </h:form>
+            </f:facet>
+          </b:modal>
+        </b:container>
       </ui:define>
 
     </ui:composition>

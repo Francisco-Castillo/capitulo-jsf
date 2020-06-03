@@ -15,6 +15,8 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  *
@@ -31,6 +33,8 @@ public class PeliculasController implements Serializable, Operaciones {
     private Peliculas nuevaPelicula = new Peliculas();
     private Peliculas pelicula = new Peliculas();
     private int idPelicula;
+    
+    Logger logger = LogManager.getLogger(PeliculasController.class);
 
     public List<Peliculas> getLstPeliculas() {
         return lstPeliculas;
@@ -78,30 +82,47 @@ public class PeliculasController implements Serializable, Operaciones {
     public String registrar() {
         try {
             peliculaEJB.create(nuevaPelicula);
+            logger.info("Se registro pelicula " + nuevaPelicula.getTitulo());
             return "/index.xhtml";
         } catch (Exception e) {
-            System.out.println("registrar() " + e.getLocalizedMessage());
+            logger.error("No se pudo eliminar " + nuevaPelicula.getTitulo(), e.getLocalizedMessage());
         }
         return null;
     }
 
     @Override
     public String eliminar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            peliculaEJB.remove(pelicula);
+            logger.info("pelicula eliminada " + pelicula.getTitulo());
+            return "/index.xhtml";
+        } catch (Exception e) {
+            logger.error("No se pudo eliminar " + pelicula.getTitulo(), e.getMessage());
+        }
+        return null;
     }
 
     @Override
     public String actualizar() {
         try {
             peliculaEJB.edit(pelicula);
-             return "/index?faces-redirect=true";
+            logger.info("se actualizó " + pelicula.getTitulo());
+            return "/index?faces-redirect=true";
         } catch (Exception e) {
-            System.out.println("actualizar() " + e.getLocalizedMessage());
+            logger.error("No se pudo eliminar " + pelicula.getTitulo(), e.getMessage());
         }
         return null;
     }
 
     public void buscar() {
-        pelicula = peliculaEJB.find(idPelicula);
+        try {
+            pelicula = peliculaEJB.find(idPelicula);
+        } catch (Exception e) {
+            logger.error("pelicula no encontrada id " + idPelicula, e.getMessage());
+        }
+    }
+
+    public void leer(Peliculas p) {
+        pelicula = peliculaEJB.find(p.getId());
     }
 }
