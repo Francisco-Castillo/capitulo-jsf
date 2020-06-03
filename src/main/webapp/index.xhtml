@@ -1,16 +1,44 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-  <head>
-    <title>addsa</title>
-  </head>
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
   <body>
 
     <ui:composition template="./plantilla/plantilla.xhtml">
 
       <ui:define name="content">
-        <h2>#{app['aplicacion.titulo']}</h2>
+          <b:container>
+            <b:row>
+              <h2>#{app['peliculas.listado']}</h2>
+              <hr/>
+              <b:column col-md="8">
+                <h:form>
+                  <b:button value="Nueva pelicula" look="primary" outcome="/peliculas/nueva" style="margin-bottom: 30px;"/>
+                  <b:dataTable value="#{peliculasController.lstPeliculas}" var="p">
+                    <b:dataTableColumn value="#{p.id}" />
+                    <b:dataTableColumn value="#{p.titulo}" />
+                    <b:dataTableColumn value="#{p.genero}" />
+                    <b:dataTableColumn value="#{p.año}" />
+
+                    <b:dataTableColumn label=" ">
+                      <b:dropButton look="primary" value="Acciones" 
+                                    size="sm"
+                                    contentDisabled="#{buttonGroupsBean.dropButtonDisabled}">
+                        <b:navCommandLink  value="Eliminar" href="#" />
+                        <b:navCommandLink  value="Editar" outcome="/peliculas/editar" >
+                          <f:param name="idPelicula" value="#{p.id}"/>
+                        </b:navCommandLink>
+                      </b:dropButton>
+                    </b:dataTableColumn>
+                  </b:dataTable>
+                </h:form>
+              </b:column>
+            </b:row>
+          </b:container>
       </ui:define>
 
     </ui:composition>

@@ -26,8 +26,7 @@ public class ResourcesFiles implements Serializable {
 
     public void saveLocale() {
         currentLocale = FacesContext.getCurrentInstance().getViewRoot().getLocale();
-        mrb = ResourceBundle.getBundle("propiedades.mensajes",
-                currentLocale);
+  
         arb = ResourceBundle.getBundle("propiedades.aplicacion",
                 currentLocale);
 

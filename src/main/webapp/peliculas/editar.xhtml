@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui">
+  <f:metadata>
+    <f:viewParam name="idPelicula" value="#{peliculasController.idPelicula}" />
+    <f:event type="preRenderView" listener="#{peliculasController.buscar()}" />
+  </f:metadata>
+  <body>
+
+    <ui:composition template="./../plantilla/plantilla.xhtml">
+
+      <ui:define name="content">
+        <b:container>
+          <b:row>
+            <h2 class="text-center">#{app['peliculas.editar']}</h2>
+            <hr/>
+            <b:column col-lg="5">
+              <b:form>
+                <b:inputText id="txtTitulo"  label="Titulo" value="#{peliculasController.pelicula.titulo}"/>    
+                <b:inputTextarea label="Descripción" value="#{peliculasController.pelicula.descripcion}"/>
+                <b:inputText id="txtGenero"  label="Genero" value="#{peliculasController.pelicula.genero}"/>   
+                <b:inputText id="txtAnio"  label="Año" value="#{peliculasController.pelicula.año}"/>   
+                <b:commandButton  value="Guardar" 
+                                  action="#{peliculasController.actualizar()}"
+                                  look="success" icon="glyphicon-ok"/>
+              </b:form>
+            </b:column>
+          </b:row>
+        </b:container>
+      </ui:define>
+
+    </ui:composition>
+
+  </body>
+</html>

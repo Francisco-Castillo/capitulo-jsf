@@ -4,7 +4,6 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-
   <h:head>
     <f:facet name="first"> 
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -19,7 +18,9 @@
   <h:body>
 
     <div id="top">
-      <ui:insert name="top">Top</ui:insert>
+      <ui:insert name="top">
+        <ui:include src="menu.xhtml"/>
+      </ui:insert>
     </div>
 
     <div id="content" class="center_content">
@@ -27,9 +28,10 @@
     </div>
 
     <div id="bottom">
-      <ui:insert name="bottom">Bottom</ui:insert>
+      <ui:insert name="bottom">
+        <h6 class="text-center">asdas</h6>
+      </ui:insert>
     </div>
 
   </h:body>
-
 </html>
