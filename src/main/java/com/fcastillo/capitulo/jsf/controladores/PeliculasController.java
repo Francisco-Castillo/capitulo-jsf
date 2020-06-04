@@ -106,7 +106,7 @@ public class PeliculasController implements Serializable, Operaciones {
     public String actualizar() {
         try {
             peliculaEJB.edit(pelicula);
-            logger.info("se actualizó " + pelicula.getTitulo());
+            logger.info("se actualizó pelicula" + pelicula.getTitulo());
             return "/index?faces-redirect=true";
         } catch (Exception e) {
             logger.error("No se pudo eliminar " + pelicula.getTitulo(), e.getMessage());

@@ -21,9 +21,10 @@
                 <b:dataTable value="#{peliculasController.lstPeliculas}" var="p">
                   <b:dataTableColumn value="#{p.id}" />
                   <b:dataTableColumn value="#{p.titulo}" />
+                  <b:dataTableColumn value="#{p.descripcion}" />
                   <b:dataTableColumn value="#{p.genero}" />
-                  <b:dataTableColumn value="#{p.año}" />
-                  <b:dataTableColumn label=" ">
+                  <b:dataTableColumn value="#{p.anio}" />
+                  <b:dataTableColumn label=" " style="width: 10%;text-align: center;">
                     <b:dropButton look="primary" value="#{app['boton.acciones']}" 
                                   size="sm"
                                   contentDisabled="#{buttonGroupsBean.dropButtonDisabled}">
@@ -41,8 +42,8 @@
             <p>#{app['modal.mensaje']} #{peliculasController.pelicula.titulo}?</p>
             <f:facet name="footer">
               <h:form>
-              <b:button value="#{app['boton.cancelar']}" dismiss="modal" />
-              <b:commandButton value="#{app['boton.aceptar']}" look="primary" action="#{peliculasController.eliminar()}"/>
+                <b:button value="#{app['boton.cancelar']}" dismiss="modal" />
+                <b:commandButton value="#{app['boton.aceptar']}" look="primary" action="#{peliculasController.eliminar()}"/>
               </h:form>
             </f:facet>
           </b:modal>

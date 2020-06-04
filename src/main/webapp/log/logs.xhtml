@@ -30,7 +30,9 @@
 
                 <b:dataTable id="tblLog" border="false" value="#{logFileController.lstLines}" var="l" select="true" responsive="true">
                   <b:dataTableColumn label="#" value="#{l.linea}"/>
-                  <b:dataTableColumn value="#{l.nivel}"/>
+                  <b:dataTableColumn label="nivel">
+                    <h:outputText value="#{l.nivel}" styleClass="#{l.nivel eq 'INFO' ? 'info' : l.nivel eq 'WARN' ? 'warn' : 'error'}"/>
+                  </b:dataTableColumn>
                   <b:dataTableColumn value="#{l.fecha}" />
                   <b:dataTableColumn value="#{l.hora}" />
                   <b:dataTableColumn value="#{l.nombreClase}" />

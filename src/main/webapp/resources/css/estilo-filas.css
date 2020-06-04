@@ -1,0 +1,20 @@
+/*Pinta las columnas de acuerdo al nivel de log*/
+.info {
+  color: #666666 !important;
+  display: block !important;
+  background-color: #ccff99 !important;
+  text-align: center;
+}
+.warn {
+  color: #666666 !important;
+  display: block;
+  background-color: #ffff99 !important;
+  text-align: center;
+}
+.error {
+  color: #666666 !important;
+  display: block !important;
+  background-color: #ffccff !important;
+  text-align: center;
+}
+

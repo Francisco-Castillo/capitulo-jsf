@@ -3,5 +3,5 @@ CREATE TABLE peliculas(
   titulo VARCHAR(100),
   descripcion TEXT,
   genero VARCHAR(20),
-  año VARCHAR(4)
+  anio VARCHAR(4)
 );

@@ -32,7 +32,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Peliculas.findById", query = "SELECT p FROM Peliculas p WHERE p.id = :id"),
     @NamedQuery(name = "Peliculas.findByTitulo", query = "SELECT p FROM Peliculas p WHERE p.titulo = :titulo"),
     @NamedQuery(name = "Peliculas.findByGenero", query = "SELECT p FROM Peliculas p WHERE p.genero = :genero"),
-    @NamedQuery(name = "Peliculas.findByA\u00f1o", query = "SELECT p FROM Peliculas p WHERE p.a\u00f1o = :a\u00f1o")})
+    @NamedQuery(name = "Peliculas.findByAnio", query = "SELECT p FROM Peliculas p WHERE p.anio = :anio")})
 public class Peliculas implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -54,8 +54,8 @@ public class Peliculas implements Serializable {
     @NotNull
     private String genero;
     @Size(max = 4)
-    @Column(name = "a\u00f1o")
-    private String año;
+    @Column(name = "anio")
+    private String anio;
 
     public Peliculas() {
     }
@@ -96,14 +96,15 @@ public class Peliculas implements Serializable {
         this.genero = genero;
     }
 
-    public String getAño() {
-        return año;
+    public String getAnio() {
+        return anio;
     }
 
-    public void setAño(String año) {
-        this.año = año;
+    public void setAnio(String anio) {
+        this.anio = anio;
     }
 
+    
     @Override
     public int hashCode() {
         int hash = 0;
