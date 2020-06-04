@@ -20,11 +20,11 @@
             <hr/>
             <b:column col-lg="5">
               <b:form>
-                <b:inputText id="txtTitulo"  label="Titulo" value="#{peliculasController.pelicula.titulo}"/>    
-                <b:inputTextarea label="Descripción" value="#{peliculasController.pelicula.descripcion}"/>
-                <b:inputText id="txtGenero"  label="Genero" value="#{peliculasController.pelicula.genero}"/>   
-                <b:inputText id="txtAnio"  label="Año" value="#{peliculasController.pelicula.año}"/>   
-                <b:commandButton  value="Guardar" 
+                <b:inputText id="txtTitulo" label="#{app['label.titulo']}" value="#{peliculasController.pelicula.titulo}"/>    
+                <b:inputTextarea label="#{app['label.descripcion']}" value="#{peliculasController.pelicula.descripcion}"/>
+                <b:inputText id="txtGenero"  label="#{app['label.genero']}" value="#{peliculasController.pelicula.genero}"/>   
+                <b:inputText id="txtAnio"  label="#{app['label.anio']}" value="#{peliculasController.pelicula.año}"/>   
+                <b:commandButton  value="#{app['boton.guardar']}" 
                                   action="#{peliculasController.actualizar()}"
                                   look="success" icon="glyphicon-ok"/>
               </b:form>

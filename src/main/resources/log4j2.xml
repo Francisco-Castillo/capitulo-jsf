@@ -17,7 +17,7 @@
     <RollingFile name="RollingFile" fileName="${path}/logVideoClub" filePattern="${path}/logVideoClub-%d{yyyy-MM-dd-HH}.log">
       
       <!--nivel fecha hora nombreclase (archivo:metodo:linea) - mensaje-->
-      <PatternLayout pattern="%d %p  %C{-4} (%F:%M:%L) - %m%n"/>
+      <PatternLayout pattern="%p %d %C (%F:%M:%L) - %m%n"/>
       
       <Policies>
         <!--Crea log todos los dias-->

@@ -9,7 +9,7 @@
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
       <f:view locale="#{idiomas.locale}"/>
       <f:loadBundle basename="propiedades.aplicacion" var="app"/> 
-      <title><h:outputText value="sad"/></title> 
+      <title><h:outputText value="#{app['aplicacion.titulo']}"/></title> 
     </f:facet>
     <h:outputStylesheet name="css/default.css"/>
     <h:outputStylesheet name="css/cssLayout.css"/>
@@ -29,7 +29,7 @@
 
     <div id="bottom">
       <ui:insert name="bottom">
-        <h6 class="text-center">asdas</h6>
+        <h4 class="text-center">#{app['aplicacion.titulo']}</h4>
       </ui:insert>
     </div>
 

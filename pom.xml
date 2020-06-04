@@ -82,6 +82,12 @@
       <version>1.4.2</version>
       <scope>compile</scope>
     </dependency>
+    <!--Primefaces-->
+    <dependency>
+      <groupId>org.primefaces</groupId>
+      <artifactId>primefaces</artifactId>
+      <version>7.0</version>
+    </dependency>
                       
   </dependencies>
 

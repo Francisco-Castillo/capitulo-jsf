@@ -10,14 +10,13 @@
       <h:form>
         <b:navBar brand="VideoClub" brandHref="/capitulo-jsf" fluid="true" >
           <b:navbarLinks>
-           
-            <b:navLink value="#{app['menu.log']}" href="#"></b:navLink>
+            <b:navLink value="#{app['menu.peliculas']}" outcome="/index"></b:navLink>
+            <b:navLink value="#{app['menu.log']}" outcome="/log/logs"></b:navLink>
             <b:dropMenu value="#{app['menu.idiomas']}" iconAwesome="flag">
-              <b:navCommandLink value="Español" immediate = "true" ajax = "false" action="#{idiomas.spanishAction}"/>
-              <b:navCommandLink value="Ingles" immediate = "true" ajax = "false"  action="#{idiomas.englishAction}"/>
+              <b:navCommandLink value="#{app['idioma.espanol']}" immediate = "true" ajax = "false" action="#{idiomas.spanishAction}"/>
+              <b:navCommandLink value="#{app['idioma.ingles']}" immediate = "true" ajax = "false"  action="#{idiomas.englishAction}"/>
             </b:dropMenu>
           </b:navbarLinks>
-
         </b:navBar>
       </h:form>
     </ui:composition>

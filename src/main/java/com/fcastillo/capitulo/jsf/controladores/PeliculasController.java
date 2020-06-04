@@ -85,9 +85,9 @@ public class PeliculasController implements Serializable, Operaciones {
             logger.info("Se registro pelicula " + nuevaPelicula.getTitulo());
             return "/index.xhtml";
         } catch (Exception e) {
-            logger.error("No se pudo eliminar " + nuevaPelicula.getTitulo(), e.getLocalizedMessage());
+            logger.error("No se pudo registrar " + nuevaPelicula.getTitulo(), e.getLocalizedMessage());
         }
-        return null;
+        return "";
     }
 
     @Override

@@ -16,11 +16,27 @@
             <hr/>
             <b:column col-lg="6">
               <b:form>
-                <b:inputText id="txtTitulo"  label="Titulo" value="#{peliculasController.nuevaPelicula.titulo}"/>    
-                <b:inputTextarea label="Descripción" value="#{peliculasController.nuevaPelicula.descripcion}"/>
-                <b:inputText id="txtGenero"  label="Genero" value="#{peliculasController.nuevaPelicula.genero}"/>   
-                <b:inputText id="txtAnio"  label="Año" value="#{peliculasController.nuevaPelicula.año}"/>   
-                <b:commandButton  value="Guardar" 
+                <b:inputText id="txtTitulo" label="#{app['label.titulo']}" 
+                             value="#{peliculasController.nuevaPelicula.titulo}" 
+                             required="true"
+                             requiredMessage="Ingrese el titulo"/>    
+                <b:message for="@previous" />
+                <b:inputTextarea label="#{app['label.descripcion']}" 
+                                 value="#{peliculasController.nuevaPelicula.descripcion}"/>
+                
+                <b:inputText id="txtGenero"  label="#{app['label.genero']}" 
+                             value="#{peliculasController.nuevaPelicula.genero}" 
+                             required="true" 
+                             requiredMessage="Ingrese el genero"/>   
+                <b:message for="@previous" />
+                
+                <b:inputText id="txtAnio"  label="#{app['label.anio']}" 
+                             value="#{peliculasController.nuevaPelicula.año}"
+                             required="true"
+                             requiredMessage="Ingrese el año"/>   
+                <b:message for="@previous" />
+                <b:commandButton  value="#{app['boton.guardar']}" 
+                                  update="@form"
                                   action="#{peliculasController.registrar()}"
                                   look="success" icon="glyphicon-ok"/>
               </b:form>
