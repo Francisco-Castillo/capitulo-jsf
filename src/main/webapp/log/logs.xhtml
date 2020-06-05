@@ -16,6 +16,8 @@
           <b:row>
             <b:column col-lg="12">
               <h:form id="frmPrincipal">
+                
+                <!-- Panel de busqueda de archivos log-->
                 <b:panel title="Buscar registros" collapsible="false" >
                   <b:panelGrid columns="2">
                     <p:selectOneMenu id="somLogFiles">
@@ -27,7 +29,8 @@
                     </p:selectOneMenu>
                   </b:panelGrid>
                 </b:panel>
-
+                
+                <!-- Muestra contenido del archivo seleccionado en una tabla-->
                 <b:dataTable id="tblLog" border="false" value="#{logFileController.lstLines}" var="l" select="true" responsive="true">
                   <b:dataTableColumn label="#" value="#{l.linea}"/>
                   <b:dataTableColumn label="nivel">
@@ -38,6 +41,7 @@
                   <b:dataTableColumn value="#{l.nombreClase}" />
                   <b:dataTableColumn value="#{l.mensaje}" />
                 </b:dataTable>
+                
               </h:form>
             </b:column>
           </b:row>

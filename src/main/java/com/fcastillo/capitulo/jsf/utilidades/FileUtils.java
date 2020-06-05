@@ -21,7 +21,7 @@ public class FileUtils {
     }//</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="procesarLog()"> 
-    public static List<Log> procesarLog(File f) throws FileNotFoundException, IOException {
+    public static List<Log> procesarArchivoLog(File f) throws FileNotFoundException, IOException {
         List<Log> lstLines = new ArrayList<>();
         BufferedReader br = new BufferedReader(new FileReader(f));
         try {
@@ -29,7 +29,7 @@ public class FileUtils {
             String line = br.readLine();
             int idLinea = 1;
             while (line != null) {
-                Log logLine = generarLogLine(idLinea, line);
+                Log logLine = generarLineaLog(idLinea, line);
 
                 lstLines.add(logLine);
 
@@ -50,15 +50,15 @@ public class FileUtils {
     //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="generarLogLine()">
-    private static Log generarLogLine(int lineaInicial, String line) {
-        String levelLogging = ULogFile.levelLogging(line);
+    private static Log generarLineaLog(int lineaInicial, String line) {
+        String levelLogging = ULogFile.getNivelLog(line);
 
-        String date = ULogFile.date(line);
-        String hour = ULogFile.hour(line);
-        String className = ULogFile.className(line);
+        String date = ULogFile.getFecha(line);
+        String hour = ULogFile.getHora(line);
+        String className = ULogFile.getClaseMetodoLinea(line);
 
-        String message = ULogFile.message(line);
-        //Log logLine = new Log(lineaInicial, levelLogging);
+        String message = ULogFile.getMensaje(line);
+       
         Log logLine = new Log(lineaInicial,levelLogging,date,hour,className, message);
         return logLine;
     }//</editor-fold>

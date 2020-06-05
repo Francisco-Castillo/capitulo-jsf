@@ -59,17 +59,22 @@ public class LogFileController implements Serializable {
         arrFiles = FileUtils.listarArchivos(DIRECTORIO);
     }
 
+    /**
+     * Método encargado de capturar el archivo de log seleccionado en el componente selectOneMenu
+     *
+     * @param event
+     * @throws IOException
+     */
     public void onChange(SelectEvent event) throws IOException {
         try {
             File file = new File(event.getObject().toString());
             nameFile = file.getName();
-            lstLines = FileUtils.procesarLog(file);
-        } catch (Exception e) {
-            logger.warn("No hay registros log para leer");
+            lstLines = FileUtils.procesarArchivoLog(file);
+        } catch (IOException e) {
+            logger.warn("No hay registros log para leer " + e.getMessage());
             nameFile = "";
             lstLines = new ArrayList<>();
         }
-
     }
 
 }

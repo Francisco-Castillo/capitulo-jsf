@@ -1,4 +1,4 @@
-package com.fcastillo.capitulo.jsf.utilidades;
+package com.fcastillo.capitulo.jsf.controladores;
 import java.io.Serializable;
 import java.util.Locale;
 import java.util.ResourceBundle;
