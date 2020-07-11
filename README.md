@@ -80,5 +80,7 @@ cd directorio/payara/bin/
 ## Probar aplicación :earth_americas:
 Abrir un navegador web e ingresar la siguiente direccion: http://localhost:8080/capitulo-jsf/
 
+[![Captura-de-pantalla-de-2020-07-11-18-36-59.png](https://i.postimg.cc/zfvY7y9K/Captura-de-pantalla-de-2020-07-11-18-36-59.png)](https://postimg.cc/VJxhLksk)
+
 ## Autor :black_nib:
 - Francisco Castillo - cefrancastillo@gmail.com
